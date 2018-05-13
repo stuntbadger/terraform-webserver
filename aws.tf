@@ -1,5 +1,5 @@
 # aws.tf
-# aws access key and aws secret key ares stored in the terrafrom.tfvars file 
+# AWS access key and AWS secret key are stored in the terrafrom.tfvars file 
 variable "AWS_ACCESS_KEY" {}
 variable "AWS_SECRET_KEY" {}
 
@@ -9,13 +9,15 @@ provider "aws" {
 	secret_key = "${var.AWS_SECRET_KEY}"
 }
 
-#ssh key 
+# ssh key 
+# This is an example of addeding a ssh key to an instance (public key only shown here not uploaded the private key) 
 resource "aws_key_pair" "laptopkey" {
 	key_name = "laptopkey"
 	public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD1O/ShVdePwSTpeViy4RCSlyWJMrdJI8SNQW0/yHALuaQTufAvuDjY1rY/uMG8k9Jt3uz+yFExaxHPzsTJLKI4y9o2diM46d6pfjTYs9bYgNMxccyy/pNxQ05AU5pz4urWkgY3bAwrVQghh/Qv1EIekaNLeRyuv0hEGYKB7mS4EVH95vhfrP+mhBTFzQS8BxM4puVthd7DH1MM61DaUFFc7WVA4Li+PTJlwMUKGMjC6Wt3mHVeL+Ee4Gxh/1fjRwfOAp/eqFV1X0lwJRkGzLT7LIzJmDHNdR9ibwt46iI8IxO75A+rdNiZD6LkkHMWMV3eVyQIQKD9t2DkjH9u+FNJ stuntbadger@laptop "
 }
 
-#webserver
+# WebServer
+# This is the main ami instance which will be created in AWS 
 resource "aws_instance" "web" {
 	ami = "ami-c12dcda6"
 	instance_type = "t2.micro"
@@ -24,14 +26,13 @@ resource "aws_instance" "web" {
         vpc_security_group_ids = [
 		"${aws_security_group.external.id}"
 	]
-
+# Friendly name could be used for Billing / departments 
 	tags {
 		Name = "WebServer"
 	     }
 	}
 
 # CREATE THE SECURITY GROUP THAT'S APPLIED TO THE EC2 INSTANCE
-
 resource "aws_security_group" "external" {
     name = "WebServer_external" # vanilla-stage_external
 
@@ -70,4 +71,3 @@ resource "aws_security_group" "external" {
         cidr_blocks = ["0.0.0.0/0"]
     }
 }
-
