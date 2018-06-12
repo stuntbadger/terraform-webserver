@@ -1,4 +1,4 @@
-# terrafrom-webserver
+# terraform-webserver
 
 Things which you need to do 
 
@@ -10,14 +10,14 @@ https://www.terraform.io/downloads.html
 
 Once downloaded the files from the git repo and terrafrom installed you will need to initalis the folder 
 
-```terrafrorm init```
+```terraform init```
 
 ```terrafrom plan ```
 This will show what is going to be created / amended in aws 
 
-```terrafrom apply ```
+```terraform apply ```
 This will start the build/config 
 
-```terrafrom destroy ```
+```terraform destroy ```
 This will remove everything in the config. 
 
