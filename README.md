@@ -8,7 +8,7 @@ https://console.aws.amazon.com/iam/home?#/security_credential
 You can download terraform from 
 https://www.terraform.io/downloads.html
 
-Once downloaded the files from the git repo and terrafrom installed you will need to initalis the folder 
+Once downloaded the files from the git repo and terraform installed you will need to initalis the folder 
 
 ```terraform init```
 
