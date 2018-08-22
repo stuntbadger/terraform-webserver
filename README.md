@@ -12,7 +12,7 @@ Once downloaded the files from the git repo and terraform installed you will nee
 
 ```terraform init```
 
-```terrafrom plan ```
+```terraform plan ```
 This will show what is going to be created / amended in aws 
 
 ```terraform apply ```
